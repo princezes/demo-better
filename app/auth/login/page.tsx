@@ -19,7 +19,7 @@ export default function LoginPage() {
     return (
         <section className="flex min-h-screen bg-zinc-50 px-4 py-8 md:py-32 dark:bg-transparent">
             <form
-                action={login}
+                action={async () => alert("nothing")}
                 className="bg-card m-auto h-fit w-full max-w-sm rounded-[calc(var(--radius)+.125rem)] border p-0.5 shadow-md dark:[--color-muted:var(--color-zinc-900)]">
                 <div className="p-4">
                     <div>
@@ -37,7 +37,7 @@ export default function LoginPage() {
                         <Button
                             onClick={login}
                             type="button"
-                            variant="outline">
+                            variant="default">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="0.98em"
@@ -58,7 +58,8 @@ export default function LoginPage() {
                             </svg>
                             <span>Google</span>
                         </Button>
-                        {/* <Button
+                        <Button
+                            onClick={() => alert("nothing")}
                             type="button"
                             variant="outline">
                             <svg
@@ -80,13 +81,13 @@ export default function LoginPage() {
                                     d="M256 256.002H134.335V134.336H256z"></path>
                             </svg>
                             <span>Microsoft</span>
-                        </Button> */}
+                        </Button>
                     </div>
 
                     <hr className="my-4 border-dashed" />
 
                     <div className="flex flex-col gap-4">
-                        {/* <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2">
                             <Label
                                 htmlFor="email"
                                 className="block text-sm">
@@ -125,7 +126,7 @@ export default function LoginPage() {
                                 id="password"
                                 className="input sz-md variant-mixed"
                             />
-                        </div> */}
+                        </div>
 
                         <Button className="w-full">Login</Button>
                     </div>
