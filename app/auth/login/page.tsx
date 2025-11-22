@@ -1,13 +1,13 @@
 "use client"
 // import { LogoIcon } from '@/components/logo'
-import { login, socialLogin } from '@/actions/auths'
+// import { login, socialLogin } from '@/actions/auths'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { auth } from '@/lib/auth'
+// import { auth } from '@/lib/auth'
 import { signIn } from '@/lib/auth-client'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
+// import { redirect } from 'next/navigation'
 
 export default function LoginPage() {
     async function login() {

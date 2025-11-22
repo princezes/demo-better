@@ -8,22 +8,22 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuRadioGroup,
-    DropdownMenuRadioItem,
+    // DropdownMenuRadioGroup,
+    // DropdownMenuRadioItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import { signOut, useSession } from "@/lib/auth-client"
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
 export function DropdownMenuRadioGroupDemo() {
     const {
         data: session,
-        isPending, //loading state
-        error, //error object
-        refetch //refetch the session
+        // isPending, 
+        // error, 
+        // refetch 
     } = useSession()
     const router = useRouter()
 

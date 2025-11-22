@@ -3,11 +3,11 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
-import Form from "next/form"
-import { signUp } from '@/lib/auth-client'
+// import Form from "next/form"
+// import { signUp } from '@/lib/auth-client'
 import { auth } from '@/lib/auth'
-import { redirect } from 'next/navigation'
-import { register } from '@/actions/auths'
+// import { redirect } from 'next/navigation'
+// import { register } from '@/actions/auths'
 export default function RegisterPage() {
     async function register(formData: FormData) {
         "use server"
