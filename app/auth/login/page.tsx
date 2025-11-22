@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 export default function LoginPage() {
     async function login() {
-        const data = await signIn.social({
+        await signIn.social({
             provider: "google",
             callbackURL: "/dashboard"
         })
