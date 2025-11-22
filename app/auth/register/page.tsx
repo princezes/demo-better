@@ -4,14 +4,36 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import Form from "next/form"
+import { signUp } from '@/lib/auth-client'
+import { auth } from '@/lib/auth'
+import { redirect } from 'next/navigation'
+import { register } from '@/actions/auths'
 export default function RegisterPage() {
     async function register(formData: FormData) {
         "use server"
-        console.log(Object.fromEntries(formData.entries()))
+        const fds = Object.fromEntries(formData.entries())
+        const email = String(fds.email)
+        const password = String(fds.password)
+        const firstname = String(fds.firstname)
+        const lastname = String(fds.lastname)
+        try {
+            await auth.api.signUpEmail({
+                body: {
+                    email,
+                    password,
+                    name: `${firstname} ${lastname}`,
+                    callbackURL: "/dashboard"
+                }
+            })
+
+        } catch (error) {
+            console.error("erreur de connexion:", error)
+        }
     }
+
     return (
         <section className="flex min-h-screen bg-zinc-50 px-4 py-8 md:py-32 dark:bg-transparent">
-            <Form
+            <form
                 action={register}
                 className="bg-card m-auto h-fit w-full max-w-sm rounded-[calc(var(--radius)+.125rem)] border p-0.5 shadow-md dark:[--color-muted:var(--color-zinc-900)]">
                 <div className="p-4">
@@ -19,7 +41,7 @@ export default function RegisterPage() {
                         <Link
                             href="/"
                             aria-label="go home">
-                            {/* <LogoIcon /> */}
+
                             <span>LogoIcon</span>
                         </Link>
                         <h1 className="mb-1 mt-4 text-xl font-semibold">Register</h1>
@@ -122,7 +144,7 @@ export default function RegisterPage() {
                         <div className="flex flex-col gap-2">
                             <div className="flex items-center justify-between">
                                 <Label
-                                    htmlFor="pwd"
+                                    htmlFor="password"
                                     className="text-title text-sm">
                                     Password
                                 </Label>
@@ -140,8 +162,8 @@ export default function RegisterPage() {
                             <Input
                                 type="password"
                                 required
-                                name="pwd"
-                                id="pwd"
+                                name="password"
+                                id="password"
                                 className="input sz-md variant-mixed"
                             />
                         </div>
@@ -161,7 +183,7 @@ export default function RegisterPage() {
                         </Button>
                     </p>
                 </div>
-            </Form>
+            </form>
         </section>
     )
 }

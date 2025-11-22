@@ -1,14 +1,25 @@
+"use client"
 // import { LogoIcon } from '@/components/logo'
+import { login, socialLogin } from '@/actions/auths'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { auth } from '@/lib/auth'
+import { signIn } from '@/lib/auth-client'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 export default function LoginPage() {
+    async function login() {
+        const data = await signIn.social({
+            provider: "google",
+            callbackURL: "/dashboard"
+        })
+    }
     return (
         <section className="flex min-h-screen bg-zinc-50 px-4 py-8 md:py-32 dark:bg-transparent">
             <form
-                action=""
+                action={login}
                 className="bg-card m-auto h-fit w-full max-w-sm rounded-[calc(var(--radius)+.125rem)] border p-0.5 shadow-md dark:[--color-muted:var(--color-zinc-900)]">
                 <div className="p-4">
                     <div>
@@ -24,6 +35,7 @@ export default function LoginPage() {
 
                     <div className="mt-6 grid grid-cols-2 gap-3">
                         <Button
+                            onClick={login}
                             type="button"
                             variant="outline">
                             <svg
@@ -46,7 +58,7 @@ export default function LoginPage() {
                             </svg>
                             <span>Google</span>
                         </Button>
-                        <Button
+                        {/* <Button
                             type="button"
                             variant="outline">
                             <svg
@@ -68,13 +80,13 @@ export default function LoginPage() {
                                     d="M256 256.002H134.335V134.336H256z"></path>
                             </svg>
                             <span>Microsoft</span>
-                        </Button>
+                        </Button> */}
                     </div>
 
                     <hr className="my-4 border-dashed" />
 
                     <div className="flex flex-col gap-4">
-                        <div className="flex flex-col gap-2">
+                        {/* <div className="flex flex-col gap-2">
                             <Label
                                 htmlFor="email"
                                 className="block text-sm">
@@ -91,7 +103,7 @@ export default function LoginPage() {
                         <div className="flex flex-col gap-2">
                             <div className="flex items-center justify-between">
                                 <Label
-                                    htmlFor="pwd"
+                                    htmlFor="password"
                                     className="text-title text-sm">
                                     Password
                                 </Label>
@@ -109,11 +121,11 @@ export default function LoginPage() {
                             <Input
                                 type="password"
                                 required
-                                name="pwd"
-                                id="pwd"
+                                name="password"
+                                id="password"
                                 className="input sz-md variant-mixed"
                             />
-                        </div>
+                        </div> */}
 
                         <Button className="w-full">Login</Button>
                     </div>
